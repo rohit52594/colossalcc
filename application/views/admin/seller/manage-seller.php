@@ -1,5 +1,5 @@
 <section class="hk-sec-wrapper">
-    <h5 class="hk-sec-title">MANAGE SELLERS</h5>
+    <h5 class="hk-sec-title">MANAGE BRANCHES</h5>
     <div class="row">
         <div class="col-sm">
             <div class="table-wrap">
@@ -11,47 +11,31 @@
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Address</th>
-                            <th>District</th>
-                            <th>Seller Badge</th>
-                            <th>Pincode</th>
                             <th>Joined date</th>
-                            <th>Type</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        foreach ($SELLERS as $seller) {
+                        foreach ($BRANCHES as $branch) {
                         ?>
                             <tr>
-                                <td><?php echo $seller->id; ?></td>
-                                <td><?php echo $seller->name; ?></td>
-                                <td><?php echo $seller->email; ?></td>
-                                <td><?php echo $seller->phone; ?></td>
-                                <td><?php echo $seller->address; ?></td>
-                                <td><?php echo $seller->district; ?></td>
-
-                                <td>
-                                    <select class="sellerBadge" data-seller="<?php echo $seller->id; ?>">
-                                        <option value="">--none--</option>
-                                        <option <?php echo ($seller->badge == 'Good Seller') ? 'selected' : ''; ?> value="Good Seller">Good Seller</option>
-                                        <option <?php echo ($seller->badge == 'Top Seller') ? 'selected' : ''; ?> value="Top Seller">Top Seller</option>
-                                    </select>
-                                </td>
-
-                                <td><?php echo $seller->pincode; ?></td>
+                                <td><?php echo $branch->id; ?></td>
+                                <td><?php echo $branch->name; ?></td>
+                                <td><?php echo $branch->email; ?></td>
+                                <td><?php echo $branch->phone; ?></td>
+                                <td><?php echo $branch->address; ?></td>
                                 
-                                <td><?php echo $seller->added_date . ' - ' . $seller->added_time; ?></td>
-                                <td><?php echo $seller->types; ?></td>
-                                <td><?php echo ($seller->is_active == 1) ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-danger">Inactive</span>'; ?></td>
+                                <td><?php echo $branch->added_date . ' - ' . $branch->added_time; ?></td>
+                                <td><?php echo ($branch->is_active == 1) ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-danger">Inactive</span>'; ?></td>
                                 <td>
-                                    <a href="<?php echo site_url('admin/seller/edit/' . $seller->id); ?>" class="btn btn-info btn-xs">Edit</a>
+                                    <a href="<?php echo site_url('admin/branch/edit/' . $branch->id); ?>" class="btn btn-info btn-xs">Edit</a>
 
-                                    <?php if ($seller->is_active == 1) { ?>
-                                        <a href="<?php echo site_url('admin/seller/changeStatus/seller/0/' . $seller->id); ?>" class="btn btn-danger btn-xs">Inactive</a>
+                                    <?php if ($branch->is_active == 1) { ?>
+                                        <a href="<?php echo site_url('admin/branch/changeStatus/seller/0/' . $branch->id); ?>" class="btn btn-danger btn-xs">Inactive</a>
                                     <?php } else { ?>
-                                        <a href="<?php echo site_url('admin/seller/changeStatus/seller/1/' . $seller->id); ?>" class="btn btn-success btn-xs">Active</a>
+                                        <a href="<?php echo site_url('admin/branch/changeStatus/seller/1/' . $branch->id); ?>" class="btn btn-success btn-xs">Active</a>
                                     <?php } ?>
                                 </td>
                             </tr>
@@ -64,23 +48,3 @@
         </div>
     </div>
 </section>
-<script>
-    $(document).on('change', '.sellerBadge', function(e) {
-        let selectedValue = $(this).val()
-        let seller = $(this).data('seller')
-        if (confirm('Are you sure want to change badge for this seller?')) {
-            $.ajax({
-                url: '<?php echo site_url('admin/seller/changeSellerBadge'); ?>',
-                dataType: 'text',
-                method: 'post',
-                data: {
-                    val: selectedValue,
-                    id: seller
-                },
-                success: function(data) {
-                    alert(data)
-                }
-            });
-        }
-    });
-</script>

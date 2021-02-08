@@ -1,21 +1,21 @@
 <?php
 
-foreach ($SELLER_DETAILS as $seller) {
+foreach ($BRANCH_DETAILS as $branch) {
 
-    $thisId = $seller->id;
-    $name = $seller->name;
-    $email = $seller->email;
-    $phone = $seller->phone;
-    $address = $seller->address;
+    $thisId = $branch->id;
+    $name = $branch->name;
+    $email = $branch->email;
+    $phone = $branch->phone;
+    $address = $branch->address;
 }
 
 ?>
 <section class="hk-sec-wrapper">
-    <h5 class="hk-sec-title">EDIT SELLER: <?php echo strtoupper($name); ?></h5>
+    <h5 class="hk-sec-title">EDIT BRANCH: <?php echo strtoupper($name); ?></h5>
     <!-- <p class="mb-25">Place an icon inside add-on on either side of an input. You may also place one on right side of an input.</p> -->
     <div class="row">
         <div class="col-sm">
-            <form autocomplete="off" action="<?php echo site_url('admin/seller/editSeller/' . $this->uri->segment(4)); ?>" method="post" enctype="multipart/form-data">
+            <form autocomplete="off" action="<?php echo site_url('admin/branch/editBranch/' . $this->uri->segment(4)); ?>" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="thisId" value="<?php echo $thisId; ?>">
                 <div class="form-group">
                     <label class="control-label mb-10" for="exampleInputuname_1">Name</label>
@@ -50,60 +50,7 @@ foreach ($SELLER_DETAILS as $seller) {
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="icon-location-pin"></i></span>
                         </div>
-                        <input type="text" class="form-control" value="<?php echo $address; ?>" name="address" id="address" placeholder="Enter seller address" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label mb-10" for="district">District</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="icon-location-pin"></i></span>
-                        </div>
-                        <select name="district" id="district" class="form-control" required onchange="getPincodes(this, this.value)">
-                            <option value="" selected disabled>--select district--</option>
-                            <?php foreach ($DISTRICTS as $key) { ?>
-                                <option <?php echo $key->district == $SELLER_DETAILS[0]->district ? 'selected' : ''; ?> value="<?php echo $key->district; ?>"><?php echo $key->district; ?></option>
-                            <?php } ?>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label mb-10" for="pincode">Pincode</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="icon-location-pin"></i></span>
-                        </div>
-                        <div id="pincodesDiv">
-                            <select class="form-control" name="pincode" id="pincode" required>
-                                <?php foreach ($PINCODES as $key) { ?>
-                                    <option <?php echo $key->pincode == $SELLER_DETAILS[0]->pincode ? 'selected' : ''; ?> value="<?php echo $key->pincode; ?>"><?php echo $key->pincode; ?></option>
-                                <?php } ?>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label mb-10" for="types">Types</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="icon-location-pin"></i></span>
-                        </div>
-                        <select name="types" id="types" class="form-control" required>
-                            <option value="" selected disabled>--select types--</option>
-                            <?php foreach ($TYPES as $key) { ?>
-                                <option <?php echo $key->types == $SELLER_DETAILS[0]->types ? 'selected' : ''; ?> value="<?php echo $key->types; ?>"><?php echo $key->types; ?></option>
-                            <?php } ?>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label mb-10" for="coverImage">Cover Image</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="icon-arrow-up-circle"></i></span>
-                        </div>
-                        <input type="file" name="coverImage" accept="images/*" class="form-control" id="coverImage">
+                        <input type="text" class="form-control" value="<?php echo $address; ?>" name="address" id="address" placeholder="Enter branch address" required>
                     </div>
                 </div>
                 <button type="submit" name="submit" class="btn btn-primary mr-10">Save Changes</button>
@@ -121,19 +68,5 @@ foreach ($SELLER_DETAILS as $seller) {
             alert('Passwords not matching');
             $(elem).focus();
         }
-    }
-
-    function getPincodes(elem, val) {
-        $.ajax({
-            type: 'POST',
-            url: '<?php echo base_url("getPincodes"); ?>',
-            dataType: 'text',
-            data: {
-                'district_id': val
-            },
-            success: function(data) {
-                $('#pincodesDiv').html(data)
-            }
-        });
     }
 </script>

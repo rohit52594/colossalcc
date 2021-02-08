@@ -59,33 +59,6 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label mb-10" for="district">District</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="icon-location-pin"></i></span>
-                        </div>
-                        <select name="district" id="district" class="form-control" required onchange="getPincodes(this, this.value)">
-                            <option value="" selected disabled>--select district--</option>
-                            <?php foreach ($DISTRICTS as $key) { ?>
-                                <option value="<?php echo $key->district; ?>"><?php echo $key->district; ?></option>
-                            <?php } ?>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label mb-10" for="pincode">Pincode</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="icon-location-pin"></i></span>
-                        </div>
-                        <div id="pincodesDiv">
-                            <select class="form-control" name="pincode" id="pincode" required>
-                                <option value="" selected disabled>--select a district first--</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
                     <label class="control-label mb-10" for="confirmPassword">Passport image</label>
                     <div class="input-group">
                         <div class="input-group-prepend">

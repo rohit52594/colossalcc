@@ -1,9 +1,9 @@
 <section class="hk-sec-wrapper">
-    <h5 class="hk-sec-title">ADD NEW SELLER</h5>
+    <h5 class="hk-sec-title">ADD NEW BRANCH</h5>
     <!-- <p class="mb-25">Place an icon inside add-on on either side of an input. You may also place one on right side of an input.</p> -->
     <div class="row">
         <div class="col-sm">
-            <form autocomplete="off" action="<?php echo site_url('admin/seller/addSeller'); ?>" method="post" enctype="multipart/form-data">
+            <form autocomplete="off" action="<?php echo site_url('admin/branch/addBranch'); ?>" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label class="control-label mb-10" for="exampleInputuname_1">Name</label>
                     <div class="input-group">
@@ -55,58 +55,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="icon-location-pin"></i></span>
                         </div>
-                        <input type="text" class="form-control" name="address" id="address" placeholder="Enter seller address" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label mb-10" for="district">District</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="icon-location-pin"></i></span>
-                        </div>
-                        <select name="district" id="district" class="form-control" required onchange="getPincodes(this, this.value)">
-                            <option value="" selected disabled>--select district--</option>
-                            <?php foreach ($DISTRICTS as $key) { ?>
-                                <option value="<?php echo $key->district; ?>"><?php echo $key->district; ?></option>
-                            <?php } ?>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label mb-10" for="pincode">Pincode</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="icon-location-pin"></i></span>
-                        </div>
-                        <div id="pincodesDiv">
-                            <select class="form-control" name="pincode" id="pincode" required>
-                                <option value="" selected disabled>--select a district first--</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label mb-10" for="types">Types</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="icon-location-pin"></i></span>
-                        </div>
-                        <select name="types" id="types" class="form-control" required>
-                            <option value="" selected disabled>--select types--</option>
-                            <?php foreach ($TYPES as $key) { ?>
-                                <option value="<?php echo $key->types; ?>"><?php echo $key->types; ?></option>
-                            <?php } ?>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label mb-10" for="coverImage">Cover Image</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="icon-arrow-up-circle"></i></span>
-                        </div>
-                        <input type="file" name="coverImage" accept="images/*" class="form-control" id="coverImage" required>
+                        <input type="text" class="form-control" name="address" id="address" placeholder="Enter branch location" required>
                     </div>
                 </div>
                 <button type="submit" name="submit" class="btn btn-primary mr-10">Save &amp; Proceed</button>
@@ -124,19 +73,5 @@
             alert('Passwords not matching');
             $(elem).focus();
         }
-    }
-
-    function getPincodes(elem, val) {
-        $.ajax({
-            type: 'POST',
-            url: '<?php echo base_url("getPincodes"); ?>',
-            dataType: 'text',
-            data: {
-                'district_id': val
-            },
-            success: function(data) {
-                $('#pincodesDiv').html(data)
-            }
-        });
     }
 </script>

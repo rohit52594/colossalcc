@@ -4,7 +4,7 @@
                 <footer class="footer">
                     <div class="row">
                         <div class="col-md-6 col-sm-12">
-                            <p>Pampered by<a href="https://buysara.com/" class="text-dark" target="_blank">Buysara</a> © 2020</p>
+                            <p>Pampered by<a href="https://colossalcc.com/" class="text-dark" target="_blank">Colossalcc</a> © 2021</p>
                         </div>
                         <div class="col-md-6 col-sm-12">
                             <p class="d-inline-block">Follow us</p>

@@ -13,7 +13,6 @@
                         <th>Passport image</th>
                         <th>License proof</th>
                         <th>Address</th>
-                        <th>PIN code for delivery</th>
                         <th>Joined date</th>
                         <th>Status</th>
                         <th>Action</th>
@@ -48,7 +47,6 @@
                                     <td><a data-toggle = "modal" class = "licenseButton" style = "cursor: pointer;" data-target = "#viewLicense" data-link = "<?php echo $licenseImage; ?>"><img src="<?php echo $licenseImage; ?>" alt="" height = "50" width = "50"></a></td>
 
                                     <td><?php echo $deliverer->address; ?></td>
-                                    <td><?php echo $deliverer->locator_pin; ?></td>
 
                                     <td><?php echo $deliverer->added_date . ' - ' . $deliverer->added_time; ?></td>
                                     <td><?php echo ($deliverer->is_active == 1) ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-danger">Inactive</span>'; ?></td>

@@ -49,31 +49,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'Welcome';
+$route['default_controller'] = 'admin/authentication';
 $route['404_override'] = 'Custom404';
 $route['translate_uri_dashes'] = FALSE;
 $route['admin'] = "admin/authentication/login";
 $route['seller'] = "seller/authentication/login";
 $route['deliverer'] = "deliverer/authentication/login";
-$route['franchise'] = "franchise/authentication/login";
-$route['employee'] = "employee/authentication/login";
-$route['report-a-problem'] = "welcome/report";
-
-$route['blog'] = "blog/index";
-$route['blog/'] = "blog/index";
-
-$route['profile'] = "profile/index";
-$route['profile/'] = "profile/index";
-
-$route['cart'] = "cart/index";
-$route['cart/'] = "cart/index";
-$route['wishlist'] = "cart/wishlist";
-$route['best-selling'] = "welcome/bestSelling";
-$route['checkout'] = "cart/checkout";
-$route['orders'] = "orders/index";
-$route['orders/'] = "orders/index";
-
-// $route['product/(:any)/(:any)'] = "product/index/$1/$2";
-// $route['product/(:any)'] = "product/index/$1";
-
-$route['(:any)'] = "welcome/$1";

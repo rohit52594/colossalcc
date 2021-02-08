@@ -1,12 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-define('PROJECT_NAME', 'Buysara');
-define('DELIVERY_CHARGE', 0);
-define('PER_KILOGRAM', 0);
-define('MAX_FREE_WEIGHT', 5);
-define('MINIMUM_ORDER_VALUE', 500000);
-define('MINIMUM_DELIVERY_CHARGE', 20);
+define('PROJECT_NAME', 'Colossalcc');
 
 
 /* If products <200 //// 2000 
@@ -34,7 +29,7 @@ define('MINIMUM_DELIVERY_CHARGE', 20);
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'https://buysara.com/';
+$config['base_url'] = 'http://localhost/colossalcc/';
 
 /*
 |--------------------------------------------------------------------------
@@ -391,7 +386,7 @@ $config['encryption_key'] = '!@^*(*^*^$%#$#fSVT776QRVTut*&i&87B88ATSB8T87*&^*{}{
 $config['sess_driver'] = 'files';
 $config['sess_cookie_name'] = 'ci_session';
 $config['sess_expiration'] = 7200;
-$config['sess_save_path'] = APPPATH.'session/cache';
+$config['sess_save_path'] = NULL;#APPPATH.'session/cache';
 $config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 300;
 $config['sess_regenerate_destroy'] = FALSE;
