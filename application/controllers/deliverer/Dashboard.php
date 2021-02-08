@@ -37,27 +37,10 @@ class Dashboard extends CI_Controller {
 
 	 public function index() {
 		$id = $this->session->userdata('id');
-		$delivererDetails = $this->Crud->Read('deliverers', " `id` = '$id'");
-		$pin = $delivererDetails[0]->locator_pin;
-
-		$newOrders = $this->Crud->Read('orders', " `current_status` = '0'");
-		$data['NEW_ORDERS'] = 0;
-		foreach ($newOrders as $key) {
-			$addressId = $key->address_id;
-			$addressDetails = $this->Crud->Read('addresses', " `id` = '$addressId'");
-			if ($addressDetails[0]->pin == $pin) {
-				++$data['NEW_ORDERS'];
-			}
-		}
-		$data['PENDING_DELIVERIES'] = $this->Crud->Count('orders', " (`current_status` = '1' OR `current_status` = '2') AND `deliverer_id` = '$id'");
-		$data['SUCCESSFUL_DELIVERIES'] = $this->Crud->Count('orders', " `current_status` = '3' AND `deliverer_id` = '$id'");
-		$data['REJECTED_DELIVERIES'] = $this->Crud->Count('orders', " `rejected_by` = '$id'");
-		$data['ONGOING_ORDERS'] = $this->Crud->Read('orders', " `current_status` = '1' AND `deliverer_id` = '$id'");
-
 		$this->load->view('deliverer/layouts/header');
 		$this->load->view('deliverer/layouts/nav');
 		$this->load->view('deliverer/layouts/bar');
-		$this->load->view('deliverer/dashboard', $data);
+		$this->load->view('deliverer/dashboard');
 		$this->load->view('deliverer/layouts/footer');
 
 	 }
