@@ -1,0 +1,259 @@
+##################################################################
+
+ALTER TABLE `employee` ADD `products` INT(11) NOT NULL DEFAULT '0' AFTER `seller`;
+
+ALTER TABLE `wide_banners` ADD `forward_link` VARCHAR(200) NULL AFTER `sub_heading`;
+
+ALTER TABLE `wide_banners` ADD `forward_link` VARCHAR(200) NULL AFTER `sub_heading`;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##################################################################
+
+employee table
+
+drop 12, 13, 14, 15, 17 from employees
+
+ALTER TABLE `employee` ADD `queries` INT(11) NOT NULL DEFAULT '0' AFTER `last_updated_remote`, ADD `blog` INT(11) NOT NULL DEFAULT '0' AFTER `queries`, ADD `reports` INT(11) NOT NULL DEFAULT '0' AFTER `blog`, ADD `notifications` INT(11) NOT NULL DEFAULT '0' AFTER `reports`, ADD `orders` INT(11) NOT NULL DEFAULT '0' AFTER `notifications`, ADD `seller` INT(11) NOT NULL DEFAULT '0' AFTER `orders`, ADD `deliverer` INT(11) NOT NULL DEFAULT '0' AFTER `seller`, ADD `customers` INT(11) NOT NULL DEFAULT '0' AFTER `deliverer`;
+
+ALTER TABLE `seller` ADD `types` VARCHAR(200) NULL AFTER `phone`;
+
+ALTER TABLE `seller` ADD `cover_image` VARCHAR(200) NULL AFTER `types`;
+
+create sellers folder inside /uploads
+
+ALTER TABLE `products` ADD `is_flashed` INT(11) NOT NULL DEFAULT '0' AFTER `is_verified`;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+copy category table types
+
+ALTER TABLE `types` CHANGE `category` `type` VARCHAR(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;
+
+create folder types in /uploads
+
+ALTER TABLE `categories` ADD `types` VARCHAR(200) NULL AFTER `category`;
+
+ALTER TABLE `types` CHANGE `type` `types` VARCHAR(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;
+
+add faq table
+
+ALTER TABLE `categories` ADD `is_featured` INT(11) NOT NULL DEFAULT '0' AFTER `is_active`;
+
+ALTER TABLE `pincodes` ADD `rain_delivery_charge` DECIMAL(55,2) NOT NULL DEFAULT '0' AFTER `pincode`, ADD `night_delivery_charge` DECIMAL(55,2) NOT NULL DEFAULT '0' AFTER `rain_delivery_charge`;
+
+add orderImage.png to /assets
+
+
+
+
+
+
+
+
+
+
+#################################################################
+
+CREATE TABLE `buysara`.`feedbacks` ( `id` INT(200) NOT NULL AUTO_INCREMENT , `title` VARCHAR(200) NOT NULL , `description` TEXT NOT NULL , `added_on` DATETIME NOT NULL , `added_by` VARCHAR(200) NOT NULL , `is_deleted` INT(11) NOT NULL DEFAULT '0' , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+ALTER TABLE `feedbacks` ADD `name` VARCHAR(200) NOT NULL AFTER `description`, ADD `phone` VARCHAR(200) NOT NULL AFTER `name`, ADD `sellerId` VARCHAR(200) NOT NULL AFTER `phone`;
+
+ALTER TABLE `feedbacks` CHANGE `phone` `email` VARCHAR(200) NOT NULL;
+
+copy franchise table from seller
+
+ALTER TABLE `franchise` DROP `pincode`, DROP `seller_level`, DROP `badge`;
+
+ALTER TABLE `orders` ADD `ordered_district` VARCHAR(200) NOT NULL AFTER `discount_amount`;
+
+update orders set ordered_district='Sivasagar' where 1;
+
+ALTER TABLE `notifications` ADD `particular_phone` VARCHAR(200) NULL AFTER `id`;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#############################################################################
+
+
+ALTER TABLE `cart` ADD `is_delivered` INT(11) NOT NULL DEFAULT '0' AFTER `status`;
+
+ALTER TABLE `cart` ADD `is_shipped` INT(11) NOT NULL DEFAULT '0' AFTER `is_delivered`;
+
+ALTER TABLE `products` ADD `is_admin_rejected` INT(11) NOT NULL DEFAULT '0' AFTER `is_verified`, ADD `admin_rejected_reason` VARCHAR(200) NULL AFTER `is_admin_rejected`;
+
+
+
+
+
+
+
+
+############################ from 16-Jan-2021 ###############################
+ALTER TABLE `products` ADD `is_verified` INT(11) NOT NULL DEFAULT '1' AFTER `total_ratings`;
+
+CREATE TABLE `buysara`.`sms_numbers` ( `id` INT(11) NOT NULL AUTO_INCREMENT , `number` VARCHAR(200) NOT NULL , `status` INT(11) NOT NULL DEFAULT '1' , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+ALTER TABLE `sms_numbers` CHANGE `number` `number` VARCHAR(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL;
+
+INSERT INTO `sms_numbers` (`id`, `number`, `status`) VALUES ('1', '7002742502', '1'), ('2', NULL, '1'), ('3', NULL, '1');
+
+ALTER TABLE `seller` ADD `badge` VARCHAR(200) NULL AFTER `is_active`;
+
+
+
+
+
+
+
+
+
+
+
+
+############## new changes ##################
+
+CREATE TABLE `buysara`.`ratings` ( `id` INT(200) NOT NULL AUTO_INCREMENT , `customer_id` INT(200) NOT NULL , `product_id` INT(200) NOT NULL , `stars` INT(200) NOT NULL , `review` VARCHAR(200) NOT NULL , `added_date` DATE NOT NULL , `added_time` TIME NOT NULL , `status` INT(11) NOT NULL DEFAULT '1' , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+ALTER TABLE `ratings` ADD `summary` VARCHAR(200) NOT NULL AFTER `stars`;
+
+
+add jquery combostar file from assets/js/
+
+ALTER TABLE `ratings` ADD `customer_name` VARCHAR(200) NOT NULL AFTER `customer_id`;
+
+ALTER TABLE `products` ADD `rating` DECIMAL(55,2) NOT NULL DEFAULT '0' AFTER `available_pincodes`;
+
+ALTER TABLE `products` ADD `total_ratings` INT(200) NOT NULL DEFAULT '0' AFTER `rating`;
+
+CREATE TABLE `buysara`.`notifications` ( `id` INT(200) NOT NULL AUTO_INCREMENT ,  `notification` VARCHAR(200) NOT NULL ,  `show_until` DATE NOT NULL ,  `location` VARCHAR(200) NOT NULL ,  `added_date` DATE NOT NULL ,  `added_time` TIME NOT NULL ,  `status` INT(11) NOT NULL DEFAULT '1' ,    PRIMARY KEY  (`id`)) ENGINE = InnoDB;
+
+ALTER TABLE `customers` ADD `is_notification` INT(11) NOT NULL DEFAULT '0' AFTER `is_active`;
+
+
+########################################################
+
+
+ALTER TABLE `coupons` ADD `allowed_categories` VARCHAR(200) NULL AFTER `minimum_purchase_value`;
+
+ALTER TABLE `products` ADD `available_pincodes` VARCHAR(200) NOT NULL DEFAULT 'GLOBAL' AFTER `the_creator`;
+
+ALTER TABLE `customers` CHANGE `viewing_district` `viewing_pincode` VARCHAR(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;
+
+
+
+
+########### BEFORE 4-JAN-2020 ###################
+
+CREATE TABLE `buysara`.`coupons` ( `id` INT(200) NOT NULL AUTO_INCREMENT , `coupon_code` VARCHAR(200) NOT NULL , `user` VARCHAR(200) NOT NULL , `expiry_date` DATE NOT NULL , `added_date` DATE NOT NULL , `added_time` TIME NOT NULL , `price_discount` DECIMAL(55,2) NOT NULL DEFAULT '0' , `percentage_discount` DECIMAL(55,2) NOT NULL DEFAULT '0' , `status` INT(11) NOT NULL DEFAULT '1' COMMENT '1 is active, 0 is inactive' , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+ALTER TABLE `coupons` DROP `price_discount`, DROP `percentage_discount`;
+
+ALTER TABLE `coupons` ADD `discount_type` VARCHAR(200) NOT NULL AFTER `expiry_date`, ADD `discount` DECIMAL(55,2) NOT NULL DEFAULT '0' AFTER `discount_type`;
+
+ALTER TABLE `coupons` ADD `minimum_purchase_value` DECIMAL(55,2) NOT NULL DEFAULT '0' AFTER `discount`;
+
+ALTER TABLE `orders` ADD `coupon_used` VARCHAR(200) NULL AFTER `rejected_by`;
+
+ALTER TABLE `orders` ADD `discount_amount` DECIMAL(55,2) NOT NULL DEFAULT '0' AFTER `coupon_used`;
+
+delete from contact where if_session_id=0;
+
+CREATE TABLE `buysara`.`pending_coupon_applies` ( `id` INT NOT NULL AUTO_INCREMENT , `customer_id` INT(200) NOT NULL , `coupon` VARCHAR(200) NOT NULL , `discount_in_inr` DECIMAL(55,2) NOT NULL DEFAULT '0' , `status` INT(11) NOT NULL DEFAULT '1' COMMENT '1 for usable, 0 for used' , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+ALTER TABLE `pending_coupon_applies` ADD `total` DECIMAL(55,2) NOT NULL DEFAULT '0' AFTER `discount_in_inr`;
+
+
+#################### BEFORE 03-DEC-2020 ####################
+
+
+ALTER TABLE `customers` ADD `pincode` VARCHAR(200) NULL AFTER `is_verified`, ADD `viewing_pincode` VARCHAR(200) NULL AFTER `pincode`, ADD `district` VARCHAR(200) NULL AFTER `viewing_pincode`;
+
+ALTER TABLE `customers` CHANGE `viewing_pincode` `viewing_district` VARCHAR(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;
+
+update customers set pincode='785685', viewing_district="Sivasagar", district="Sivasagar" where 1;
+
+ALTER TABLE `addresses` ADD `district` VARCHAR(200) NOT NULL DEFAULT 'Sivasagar' AFTER `pin`;
+
+
+
+
+
+
+#################### BEFORE 27-DEC-2020 ####################
+
+ALTER TABLE `products` ADD `the_creator` INT(11) NOT NULL DEFAULT '0' COMMENT '0 is admin and other id means seller id from seller table' AFTER `is_active`;
+
+ALTER TABLE `cart` ADD `the_creator` INT(22) NOT NULL DEFAULT '0' COMMENT '0 is admin and other id means seller id from seller table' AFTER `is_ordered`;
+
+ALTER TABLE `products` ADD `is_active_backup` INT(200) NOT NULL DEFAULT '1' AFTER `is_active`;
+
+update products set is_active_backup=is_active where 1
+
+
+#################### BEFORE 22-DEC-2020 ####################
+folder changes:
+add folder requirements inside uploads
+
+
+
+
+
+
+database changes:
+add a column in requirements: image 
+ALTER TABLE `requirements` ADD `image` VARCHAR(200) NULL AFTER `if_session_id`;
+
+deliverer bank details
+ALTER TABLE `deliverers` ADD `bank_name` VARCHAR(200) NULL AFTER `locator_pin`, ADD `account_number` VARCHAR(200) NULL AFTER `bank_name`, ADD `ifsc` VARCHAR(200) NULL AFTER `account_number`, ADD `branch` VARCHAR(200) NULL AFTER `ifsc`;
+
+seller table
+ALTER TABLE `seller` ADD `district` VARCHAR(200) NULL AFTER `last_updated_remote`, ADD `pincode` VARCHAR(200) NULL AFTER `district`, ADD `is_available` INT(11) NOT NULL DEFAULT '1' AFTER `pincode`, ADD `seller_level` INT(11) NOT NULL DEFAULT '0' AFTER `is_available`;
+
+CREATE TABLE `buysara`.`districts` ( `id` INT(11) NOT NULL AUTO_INCREMENT , `district` VARCHAR(200) NOT NULL , `status` INT(11) NOT NULL DEFAULT '1' , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+CREATE TABLE `buysara`.`pincodes` ( `id` INT(11) NOT NULL AUTO_INCREMENT , `district_id` VARCHAR(200) NOT NULL , `pincode` VARCHAR(200) NOT NULL , `status` INT(11) NOT NULL DEFAULT '1' , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+ALTER TABLE `pincodes` ADD `district` VARCHAR(200) NOT NULL AFTER `district_id`;
+
+ALTER TABLE `deliverers` ADD `district` VARCHAR(200) NULL AFTER `locator_pin`;
+
+other changes in assets,
+chart js: assets/chart/Chart.bundle.js
