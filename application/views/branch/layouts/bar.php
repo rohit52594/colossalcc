@@ -9,82 +9,19 @@
             </div>
             <ul class="navbar-nav flex-column">
                 <li class="nav-item <?php echo ($this->uri->segment(2) == 'dashboard') ? 'active' : ''; ?>">
-                    <a class="nav-link" href="<?php echo site_url('seller/dashboard'); ?>">
+                    <a class="nav-link" href="<?php echo site_url('branch/dashboard'); ?>">
                         <span class="feather-icon"><i data-feather="activity"></i></span>
                         <span class="nav-link-text">Dashboard</span>
                     </a>
                 </li>
             </ul>
             <ul class="navbar-nav flex-column">
+
                 <li class="nav-item <?php echo ($this->uri->segment(2) == 'earning') ? 'active' : ''; ?>">
-                    <a class="nav-link" href="<?php echo site_url('seller/dashboard/earning'); ?>">
+                    <a class="nav-link" href="#" onclick="alert('Coming soon')">
                         <span class="feather-icon"><i data-feather="activity"></i></span>
-                        <span class="nav-link-text">Earning</span>
+                        <span class="nav-link-text">Received Items</span>
                     </a>
-                </li>
-            </ul>
-
-            <hr class="nav-separator">
-            <div class="nav-header">
-                <span>Products</span>
-                <span>Products</span>
-            </div>
-
-
-
-            <ul class="navbar-nav flex-column">
-
-                <li class="nav-item <?php echo ($this->uri->segment(2) == 'product') ? 'active' : ''; ?>">
-                    <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#product">
-                        <span class="feather-icon"><i data-feather="shopping-cart"></i></span>
-                        <span class="nav-link-text">Product</span>
-                    </a>
-                    <ul id="product" class="nav flex-column collapse collapse-level-1">
-                        <li class="nav-item">
-                            <ul class="nav flex-column">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo site_url('seller/product/new'); ?>">New product</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo site_url('seller/product/unapproved'); ?>">Under Verification</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo site_url('seller/product/view'); ?>">View products</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo site_url('seller/product/inactive'); ?>">Inactive products</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-
-            <ul class="navbar-nav flex-column">
-
-                <li class="nav-item <?php echo ($this->uri->segment(2) == 'orders') ? 'active' : ''; ?>">
-                    <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#orders">
-                        <span class="feather-icon"><i data-feather="shopping-cart"></i></span>
-                        <span class="nav-link-text">Orders</span>
-                    </a>
-                    <ul id="orders" class="nav flex-column collapse collapse-level-1">
-                        <li class="nav-item">
-                            <ul class="nav flex-column">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo site_url('seller/orders/pending'); ?>">Pending Orders</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo site_url('seller/orders/processing'); ?>">Processing Orders</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo site_url('seller/orders/completed'); ?>">Completed Orders</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo site_url('seller/orders/cancelled'); ?>">Cancelled Orders</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
                 </li>
             </ul>
 
@@ -104,13 +41,13 @@
                         <li class="nav-item">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo site_url('seller/settings/profile'); ?>">Profile</a>
+                                    <a class="nav-link" href="<?php echo site_url('branch/settings/profile'); ?>">Profile</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo site_url('seller/settings/password'); ?>">Password</a>
+                                    <a class="nav-link" href="<?php echo site_url('branch/settings/password'); ?>">Password</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo site_url('seller/settings/history'); ?>">Login history</a>
+                                    <a class="nav-link" href="<?php echo site_url('branch/settings/history'); ?>">Login history</a>
                                 </li>
                                 <!-- <li class="nav-item">
                                             <a class="nav-link" href="editable-table.html">Editable Table</a>
@@ -122,7 +59,7 @@
             </ul>
             <ul class="navbar-nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo site_url('seller/dashboard/logout'); ?>">
+                    <a class="nav-link" href="<?php echo site_url('branch/dashboard/logout'); ?>">
                         <span class="feather-icon"><i data-feather="log-out"></i></span>
                         <span class="nav-link-text">Logout</span>
                     </a>
@@ -135,19 +72,7 @@
             </div>
             <ul class="navbar-nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo site_url('seller/dashboard/feedback/'); ?>">
-                        <span class="feather-icon"><i data-feather="book"></i></span>
-                        <span class="nav-link-text">Feedback</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?php echo site_url('faq'); ?>" target="_BLANK">
-                        <span class="feather-icon"><i data-feather="book"></i></span>
-                        <span class="nav-link-text">FAQ</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="tel:+918402081401">
+                    <a class="nav-link" href="tel:+919999999999">
                         <span class="feather-icon"><i data-feather="headphones"></i></span>
                         <span class="nav-link-text">Support</span>
                     </a>
@@ -162,7 +87,7 @@
     <!-- Breadcrumb -->
     <nav class="hk-breadcrumb" aria-label="breadcrumb">
         <ol class="breadcrumb breadcrumb-light bg-transparent">
-            <li class="breadcrumb-item"><a href="<?php echo site_url('seller/dashboard'); ?>">Home</a></li>
+            <li class="breadcrumb-item"><a href="<?php echo site_url('branch/dashboard'); ?>">Home</a></li>
             <?php if ($this->uri->segment(2)) { ?>
                 <li class="breadcrumb-item active" aria-current="page"><?php echo ucwords($this->uri->segment(2)); ?></li>
             <?php } ?>

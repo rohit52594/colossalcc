@@ -71,7 +71,7 @@
 														</div>
 														<div class="media-body">
 															<div class="text-capitalize font-weight-500 text-dark"><?php echo $this->session->userdata('name'); ?></div>
-															<div class="font-13">Seller</div>
+															<div class="font-13">Branch</div>
 														</div>
 													</div>
 												</div>

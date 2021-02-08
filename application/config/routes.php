@@ -53,5 +53,5 @@ $route['default_controller'] = 'admin/authentication';
 $route['404_override'] = 'Custom404';
 $route['translate_uri_dashes'] = FALSE;
 $route['admin'] = "admin/authentication/login";
-$route['seller'] = "seller/authentication/login";
+$route['branch'] = "branch/authentication/login";
 $route['deliverer'] = "deliverer/authentication/login";

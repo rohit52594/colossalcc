@@ -33,9 +33,9 @@ class Authentication extends CI_Controller {
 
 	public function login()
 	{
-		$this->load->view('seller/login/header');
-		$this->load->view('seller/login/login');
-		$this->load->view('seller/login/footer');
+		$this->load->view('branch/login/header');
+		$this->load->view('branch/login/login');
+		$this->load->view('branch/login/footer');
 	}
 
 	public function processLogin() {
@@ -55,19 +55,19 @@ class Authentication extends CI_Controller {
 
 			if ($result == '') {
 
-				redirect('seller/dashboard');
+				redirect('branch/dashboard');
 
 			} else {
 
 				$this->session->set_flashdata('message', $result);
 
-				redirect('seller/authentication/login');
+				redirect('branch/authentication/login');
 
 			}
 
 		} else {
 
-			redirect('seller/authentication/login');
+			redirect('branch/authentication/login');
 
 		}
 

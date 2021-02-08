@@ -15,8 +15,8 @@
 							echo '<div class = "alert alert-danger">' . $this->session->flashdata('message') .'</div>';
 						}
 					?>
-                        <form method="post" action = "<?php echo site_url('seller/authentication/processLogin'); ?>">
-                            <h1 class="display-4 mb-10">Welcome Back Seller :)</h1>
+                        <form method="post" action = "<?php echo site_url('branch/authentication/processLogin'); ?>">
+                            <h1 class="display-4 mb-10">Welcome Back Branch :)</h1>
                             <p class="mb-30">Sign in to your account to start your session.</p>
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder = "Enter your registered phone number" name = "phone" value = "<?php echo set_value('email'); ?>">

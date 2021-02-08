@@ -33,7 +33,7 @@ class Settings extends CI_Controller {
 
 		if (!$this->session->userdata('id') || $this->session->userdata('role') != 'SELLER') {
 
-            redirect('seller/authentication/login');
+            redirect('branch/authentication/login');
 
         }
 
@@ -41,11 +41,11 @@ class Settings extends CI_Controller {
 
 	 public function password() {
 
-		$this->load->view('seller/layouts/header');
-		$this->load->view('seller/layouts/nav');
-		$this->load->view('seller/layouts/bar');
-		$this->load->view('seller/settings/password');
-		$this->load->view('seller/layouts/footer');
+		$this->load->view('branch/layouts/header');
+		$this->load->view('branch/layouts/nav');
+		$this->load->view('branch/layouts/bar');
+		$this->load->view('branch/settings/password');
+		$this->load->view('branch/layouts/footer');
 
      }
 
@@ -71,7 +71,7 @@ class Settings extends CI_Controller {
 
             $this->session->set_flashdata($message, $output);
 
-            redirect('seller/settings/password');
+            redirect('branch/settings/password');
 
         } else {
 
@@ -85,11 +85,11 @@ class Settings extends CI_Controller {
 
         $data['LOGIN_HISTORY'] = $this->Settings_model->getLoginHistory();
 
-        $this->load->view('seller/layouts/header');
-		$this->load->view('seller/layouts/nav');
-		$this->load->view('seller/layouts/bar');
-		$this->load->view('seller/settings/history', $data);
-        $this->load->view('seller/layouts/footer');
+        $this->load->view('branch/layouts/header');
+		$this->load->view('branch/layouts/nav');
+		$this->load->view('branch/layouts/bar');
+		$this->load->view('branch/settings/history', $data);
+        $this->load->view('branch/layouts/footer');
 
     }
 
@@ -99,11 +99,11 @@ class Settings extends CI_Controller {
 
         $data['PROFILE_DETAILS'] = $this->Crud->Read('seller', " `id` = '$sessionId'");
 
-        $this->load->view('seller/layouts/header');
-		$this->load->view('seller/layouts/nav');
-		$this->load->view('seller/layouts/bar');
-		$this->load->view('seller/settings/profile', $data);
-        $this->load->view('seller/layouts/footer');
+        $this->load->view('branch/layouts/header');
+		$this->load->view('branch/layouts/nav');
+		$this->load->view('branch/layouts/bar');
+		$this->load->view('branch/settings/profile', $data);
+        $this->load->view('branch/layouts/footer');
 
     }
 
@@ -117,7 +117,7 @@ class Settings extends CI_Controller {
 
         }
 
-        redirect('seller/authentication/login');
+        redirect('branch/authentication/login');
 
 	 }
 

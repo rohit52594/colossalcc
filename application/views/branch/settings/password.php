@@ -4,7 +4,7 @@
             <div class="col-3">
             </div>
             <div class="col-6">
-            <form action="<?php echo site_url('seller/settings/changePassword'); ?>" method="post">
+            <form action="<?php echo site_url('branch/settings/changePassword'); ?>" method="post">
                 <div class="input-group mb-3">
                 <input type="password" required name = "password" class="form-control" value = "<?php echo set_value('password'); ?>" placeholder="Current Password">
                     <div class="input-group-append">

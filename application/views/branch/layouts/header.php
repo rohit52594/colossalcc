@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title><?php echo $this->uri->segment(3) ? ucwords($this->uri->segment(3)) : ucwords($this->uri->segment(2)); ?> | <?php echo PROJECT_NAME; ?> Seller Panel</title>
+    <title><?php echo $this->uri->segment(3) ? ucwords($this->uri->segment(3)) : ucwords($this->uri->segment(2)); ?> | <?php echo PROJECT_NAME; ?> Deliverer Panel</title>
     <meta name="description" content="" />
 
     <!-- Favicon -->
