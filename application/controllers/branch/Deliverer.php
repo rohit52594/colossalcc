@@ -33,9 +33,9 @@ class Deliverer extends CI_Controller
 
 		$this->load->model('Crud');
 
-		if (!$this->session->userdata('id') || $this->session->userdata('role') != 'ADMIN') {
+		if (!$this->session->userdata('id') || $this->session->userdata('role') != 'SELLER') {
 
-			redirect('admin/authentication/login');
+			redirect('branch/authentication/login');
 		}
 	}
 
@@ -43,11 +43,11 @@ class Deliverer extends CI_Controller
 	{
 		$data['BRANCHES'] = $this->Crud->Read('seller', " `is_active` = '1'");
 
-		$this->load->view('admin/layouts/header');
-		$this->load->view('admin/layouts/nav');
-		$this->load->view('admin/layouts/bar');
-		$this->load->view('admin/deliverer/add-deliverer', $data);
-		$this->load->view('admin/layouts/footer');
+		$this->load->view('branch/layouts/header');
+		$this->load->view('branch/layouts/nav');
+		$this->load->view('branch/layouts/bar');
+		$this->load->view('branch/deliverer/add-deliverer', $data);
+		$this->load->view('branch/layouts/footer');
 	}
 
 	public function addDeliverer()
@@ -60,7 +60,6 @@ class Deliverer extends CI_Controller
 		$this->form_validation->set_rules('phone', 'Phone', 'required');
 
 		$this->form_validation->set_rules('confirmPassword', 'Confirmation password', 'required');
-		$this->form_validation->set_rules('the_branch', 'Branch', 'required');
 
 		if ($this->form_validation->run()) {
 
@@ -89,7 +88,7 @@ class Deliverer extends CI_Controller
 					'ifsc' => $this->input->post('ifsc'),
 
 					'branch' => $this->input->post('branch'),
-					'branch_code' => $this->input->post('the_branch'),
+					'branch_code' => $this->session->userdata('id'),
 
 					'added_date' => date('Y-m-d'),
 
@@ -220,14 +219,14 @@ class Deliverer extends CI_Controller
 
 					$this->session->set_flashdata('success', 'Deliverer Registered');
 
-					redirect('admin/deliverer/new');
+					redirect('branch/deliverer/new');
 				}
 			} else {
 
 				$this->session->set_flashdata('warning', 'Phone number already in use with another deliverer');
 			}
 
-			redirect('admin/deliverer/new');
+			redirect('branch/deliverer/new');
 		} else {
 
 			$this->new();
@@ -236,14 +235,14 @@ class Deliverer extends CI_Controller
 
 	public function view()
 	{
+		$myId = $this->session->userdata('id');
+		$data['DELIVERERS'] = $this->Crud->Read('deliverers', " `id` = '$myId'");
 
-		$data['DELIVERERS'] = $this->Crud->Read('deliverers', " `id` != '0'");
-
-		$this->load->view('admin/layouts/header');
-		$this->load->view('admin/layouts/nav');
-		$this->load->view('admin/layouts/bar');
-		$this->load->view('admin/deliverer/manage-deliverer', $data);
-		$this->load->view('admin/layouts/footer');
+		$this->load->view('branch/layouts/header');
+		$this->load->view('branch/layouts/nav');
+		$this->load->view('branch/layouts/bar');
+		$this->load->view('branch/deliverer/manage-deliverer', $data);
+		$this->load->view('branch/layouts/footer');
 	}
 
 	public function changeStatus()
@@ -273,7 +272,7 @@ class Deliverer extends CI_Controller
 
 		$referer = basename($_SERVER['HTTP_REFERER']);
 
-		redirect('admin/deliverer/' . $referer);
+		redirect('branch/deliverer/' . $referer);
 	}
 
 	public function edit()
@@ -282,17 +281,17 @@ class Deliverer extends CI_Controller
 		$isExists = $this->Crud->Count('deliverers', " `id` = '$delivererId'");
 		if ($isExists < 1) {
 			$this->session->set_flashdata('danger', "No deliverers found");
-			redirect('admin/deliverer/view');
+			redirect('branch/deliverer/view');
 		} else {
 			$data['DELIVERER_DETAILS'] = $this->Crud->Read('deliverers', " `id` = '$delivererId'");
 			$data['BRANCHES'] = $this->Crud->Read('seller', " `is_active` = '1'");
 		}
 
-		$this->load->view('admin/layouts/header');
-		$this->load->view('admin/layouts/nav');
-		$this->load->view('admin/layouts/bar');
-		$this->load->view('admin/deliverer/edit-deliverer', $data);
-		$this->load->view('admin/layouts/footer');
+		$this->load->view('branch/layouts/header');
+		$this->load->view('branch/layouts/nav');
+		$this->load->view('branch/layouts/bar');
+		$this->load->view('branch/deliverer/edit-deliverer', $data);
+		$this->load->view('branch/layouts/footer');
 	}
 
 	public function editDeliverer()
@@ -307,7 +306,6 @@ class Deliverer extends CI_Controller
 		$this->form_validation->set_rules('phone', 'Phone', 'required');
 
 		$this->form_validation->set_rules('address', 'Address', 'required|trim');
-		$this->form_validation->set_rules('the_branch', 'Branch', 'required');
 
 		if ($this->form_validation->run()) {
 
@@ -332,9 +330,9 @@ class Deliverer extends CI_Controller
 					'account_number' => $this->input->post('account_number'),
 
 					'ifsc' => $this->input->post('ifsc'),
-					
+
 					'branch' => $this->input->post('branch'),
-					'branch_code' => $this->input->post('the_branch'),
+					'branch_code' => $this->session->userdata('id'),
 
 					'last_updated_date' => date('Y-m-d'),
 
@@ -465,7 +463,7 @@ class Deliverer extends CI_Controller
 
 					$this->session->set_flashdata('success', 'Deliverer details updated successfully!');
 
-					redirect('admin/deliverer/view');
+					redirect('branch/deliverer/view');
 				}
 			} else {
 
@@ -475,7 +473,7 @@ class Deliverer extends CI_Controller
 
 			$this->session->set_flashdata('warning', 'Invalid form data entered!' . $delivererId);
 
-			redirect('admin/deliverer/view');
+			redirect('branch/deliverer/view');
 		}
 	}
 
@@ -489,7 +487,7 @@ class Deliverer extends CI_Controller
 			$this->session->unset_userdata($key);
 		}
 
-		redirect('admin/authentication/login');
+		redirect('branch/authentication/login');
 	}
 
 	public function payrole()
@@ -528,10 +526,10 @@ class Deliverer extends CI_Controller
 				$this->deliverers;
 			}
 		}
-		$this->load->view('admin/layouts/header');
-		$this->load->view('admin/layouts/nav');
-		$this->load->view('admin/layouts/bar');
-		$this->load->view('admin/deliverer/payrole', $data);
-		$this->load->view('admin/layouts/footer');
+		$this->load->view('branch/layouts/header');
+		$this->load->view('branch/layouts/nav');
+		$this->load->view('branch/layouts/bar');
+		$this->load->view('branch/deliverer/payrole', $data);
+		$this->load->view('branch/layouts/footer');
 	}
 }

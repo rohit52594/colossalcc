@@ -1,42 +1,16 @@
-<?php
-
-foreach ($DELIVERER_DETAILS as $deliverer) {
-
-    $thisId = $deliverer->id;
-    $name = $deliverer->name;
-    $email = $deliverer->email;
-    $phone = $deliverer->phone;
-    $address = $deliverer->address;
-}
-
-$documentsPassport = $this->Crud->Read('assets_deliverer', " `deliverer_id` = '$thisId' AND `asset_type` = 'PASSPORT IMAGE'");
-$passportImage = '';
-$licenseImage = '';
-foreach ($documentsPassport as $docPassport) {
-    $passportImage = base_url() . 'uploads/deliverer/' . $docPassport->file_name;
-}
-
-$documentsLicense = $this->Crud->Read('assets_deliverer', " `deliverer_id` = '$thisId' AND `asset_type` = 'LICENSE PROOF'");
-
-foreach ($documentsLicense as $docLicense) {
-    $licenseImage = base_url() . 'uploads/deliverer/' . $docLicense->file_name;
-}
-
-?>
 <section class="hk-sec-wrapper">
-    <h5 class="hk-sec-title">EDIT DELIVERER: <?php echo strtoupper($name); ?></h5>
+    <h5 class="hk-sec-title">ADD NEW DELIVERER</h5>
     <!-- <p class="mb-25">Place an icon inside add-on on either side of an input. You may also place one on right side of an input.</p> -->
     <div class="row">
         <div class="col-sm">
-            <form autocomplete="off" action="<?php echo site_url('admin/deliverer/editDeliverer/' . $this->uri->segment(4)); ?>" method="post" enctype="multipart/form-data">
-                <input type="hidden" name="thisId" value="<?php echo $thisId; ?>">
+            <form autocomplete="off" action="<?php echo site_url('branch/deliverer/addDeliverer'); ?>" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label class="control-label mb-10" for="exampleInputuname_1">Name</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="icon-user"></i></span>
                         </div>
-                        <input type="text" class="form-control" name="name" id="exampleInputuname_1" value="<?php echo $name; ?>" placeholder="Full name" required>
+                        <input type="text" class="form-control" name="name" id="exampleInputuname_1" placeholder="Full name" required>
                     </div>
                 </div>
                 <div class="form-group">
@@ -45,7 +19,7 @@ foreach ($documentsLicense as $docLicense) {
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="icon-envelope-open"></i></span>
                         </div>
-                        <input type="email" class="form-control" name="email" id="exampleInputEmail_1" value="<?php echo $email; ?>" placeholder="Enter email">
+                        <input type="email" class="form-control" name="email" id="exampleInputEmail_1" placeholder="Enter email">
                     </div>
                 </div>
                 <div class="form-group">
@@ -54,7 +28,25 @@ foreach ($documentsLicense as $docLicense) {
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="icon-envelope-open"></i></span>
                         </div>
-                        <input type="text" class="form-control" name="phone" value="<?php echo $phone; ?>" maxlength="10" pattern="[6789][0-9]{9}" id="phone" placeholder="Enter contact number">
+                        <input type="text" class="form-control" name="phone" maxlength="10" pattern="[6789][0-9]{9}" id="phone" placeholder="Enter contact number">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label mb-10" for="password">Password</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="icon-lock"></i></span>
+                        </div>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label mb-10" for="confirmPassword">Confirm Password</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="icon-lock"></i></span>
+                        </div>
+                        <input type="password" class="form-control" onchange="checkPassword(this.value, this);" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
                     </div>
                 </div>
                 <div class="form-group">
@@ -63,7 +55,7 @@ foreach ($documentsLicense as $docLicense) {
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="icon-location-pin"></i></span>
                         </div>
-                        <input type="text" class="form-control" value="<?php echo $address; ?>" name="address" id="address" placeholder="Enter deliverer address" required>
+                        <input type="text" class="form-control" name="address" id="address" placeholder="Enter deliverer address" required>
                     </div>
                 </div>
                 <div class="form-group">
@@ -72,9 +64,9 @@ foreach ($documentsLicense as $docLicense) {
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="icon-arrow-up-circle"></i></span>
                         </div>
-                        <input type="file" name="passportImage" accept="images/*" class="form-control" id="passportImage">
+                        <input type="file" name="passportImage" accept="images/*" class="form-control" id="passportImage" required>
                     </div>
-                    <br /><img src="<?php echo $passportImage; ?>" id="showImagePassport" alt="" height="100" width="150">
+                    <br /><img src="" id="showImagePassport" alt="" height="100" width="150">
                 </div>
 
 
@@ -84,9 +76,9 @@ foreach ($documentsLicense as $docLicense) {
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="icon-arrow-up-circle"></i></span>
                         </div>
-                        <input type="file" name="licenseImage" accept="images/*" class="form-control" id="licenseImage">
+                        <input type="file" name="licenseImage" accept="images/*" class="form-control" id="licenseImage" required>
                     </div>
-                    <br /><img src="<?php echo $licenseImage; ?>" id="showImageLicense" alt="" height="100" width="150">
+                    <br /><img src="" id="showImageLicense" alt="" height="100" width="150">
                 </div>
 
                 <h5>Account Details: </h5>
@@ -96,7 +88,7 @@ foreach ($documentsLicense as $docLicense) {
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="icon-user"></i></span>
                         </div>
-                        <input type="text" class="form-control" value="<?php echo $DELIVERER_DETAILS[0]->bank_name; ?>" name="bank_name" id="exampleInputuname_1" placeholder="Bank name" required>
+                        <input type="text" class="form-control" name="bank_name" id="exampleInputuname_1" placeholder="Bank name" required>
                     </div>
                 </div>
 
@@ -106,7 +98,7 @@ foreach ($documentsLicense as $docLicense) {
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="icon-user"></i></span>
                         </div>
-                        <input type="text" class="form-control" value="<?php echo $DELIVERER_DETAILS[0]->account_number; ?>" name="account_number" id="exampleInputuname_1" placeholder="Account Number" required>
+                        <input type="text" class="form-control" name="account_number" id="exampleInputuname_1" placeholder="Account Number" required>
                     </div>
                 </div>
 
@@ -116,7 +108,7 @@ foreach ($documentsLicense as $docLicense) {
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="icon-user"></i></span>
                         </div>
-                        <input type="text" class="form-control" value="<?php echo $DELIVERER_DETAILS[0]->ifsc; ?>" name="ifsc" id="exampleInputuname_1" placeholder="ifsc" required>
+                        <input type="text" class="form-control" name="ifsc" id="exampleInputuname_1" placeholder="ifsc" required>
                     </div>
                 </div>
 
@@ -126,27 +118,10 @@ foreach ($documentsLicense as $docLicense) {
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="icon-user"></i></span>
                         </div>
-                        <input type="text" class="form-control" value="<?php echo $DELIVERER_DETAILS[0]->branch; ?>" name="branch" id="exampleInputuname_1" placeholder="Branch Name" required>
+                        <input type="text" class="form-control" name="branch" id="exampleInputuname_1" placeholder="Branch Name" required>
                     </div>
                 </div>
-
-                <div class="form-group">
-                    <label class="control-label mb-10" for="the_branch">Select Branch</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="icon-user"></i></span>
-                        </div>
-                        <select name="the_branch" id="the_branch" class="form-control" required>
-                            <option value="">--select branch--</option>
-                            <?php foreach ($BRANCHES as $key) {
-                                $isSelected = $key->id == $DELIVERER_DETAILS[0]->branch_code ? 'selected' : '';
-                                ?>
-                                <option <?php echo $isSelected; ?> value="<?php echo $key->id; ?>"><?php echo $key->name . " - " . $key->phone; ?></option>
-                            <?php } ?>
-                        </select>
-                    </div>
-                </div>
-                <button type="submit" name="submit" class="btn btn-primary mr-10">Save Changes</button>
+                <button type="submit" name="submit" class="btn btn-primary mr-10">Save &amp; Proceed</button>
                 <button type="reset" class="btn btn-light">Cancel</button>
             </form>
         </div>
@@ -185,5 +160,19 @@ foreach ($documentsLicense as $docLicense) {
 
         $("#showImageLicense").fadeIn("fast").attr('src', URL.createObjectURL(event.target.files[0]));
 
+    }
+
+    function getPincodes(elem, val) {
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo base_url("getPincodes"); ?>',
+            dataType: 'text',
+            data: {
+                'district_id': val
+            },
+            success: function(data) {
+                $('#pincodesDiv').html(data)
+            }
+        });
     }
 </script>

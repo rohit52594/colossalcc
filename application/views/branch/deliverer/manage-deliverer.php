@@ -54,12 +54,12 @@
                                     <td><?php echo $branchDetails[0]->name . ' - ' . $branchDetails[0]->phone; ?></td>
                                     <td><?php echo ($deliverer->is_active == 1) ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-danger">Inactive</span>'; ?></td>
                                     <td>
-                                        <a href = "<?php echo site_url('admin/deliverer/edit/'.$deliverer->id); ?>" class = "btn btn-info btn-xs">Edit</a>
+                                        <a href = "<?php echo site_url('branch/deliverer/edit/'.$deliverer->id); ?>" class = "btn btn-info btn-xs">Edit</a>
 
                                         <?php if ($deliverer->is_active == 1) { ?>
-                                            <a href = "<?php echo site_url('admin/deliverer/changeStatus/deliverers/0/'.$deliverer->id); ?>" class = "btn btn-danger btn-xs">Inactive</a>
+                                            <a href = "<?php echo site_url('branch/deliverer/changeStatus/deliverers/0/'.$deliverer->id); ?>" class = "btn btn-danger btn-xs">Inactive</a>
                                         <?php } else { ?>
-                                            <a href = "<?php echo site_url('admin/deliverer/changeStatus/deliverers/1/'.$deliverer->id); ?>" class = "btn btn-success btn-xs">Active</a>
+                                            <a href = "<?php echo site_url('branch/deliverer/changeStatus/deliverers/1/'.$deliverer->id); ?>" class = "btn btn-success btn-xs">Active</a>
                                         <?php } ?>
                                     </td>
                                 </tr>

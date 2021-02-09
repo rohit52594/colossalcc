@@ -113,12 +113,27 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label mb-10" for="exampleInputuname_1">Branch Name</label>
+                    <label class="control-label mb-10" for="exampleInputuname_1">Bank Branch Name</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="icon-user"></i></span>
                         </div>
                         <input type="text" class="form-control" name="branch" id="exampleInputuname_1" placeholder="Branch Name" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label mb-10" for="the_branch">Select Branch</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="icon-user"></i></span>
+                        </div>
+                        <select name="the_branch" id="the_branch" class="form-control" required>
+                            <option value="">--select branch--</option>
+                            <?php foreach ($BRANCHES as $key) { ?>
+                                <option value="<?php echo $key->id; ?>"><?php echo $key->name . " - " . $key->phone; ?></option>
+                            <?php } ?>
+                        </select>
                     </div>
                 </div>
                 <button type="submit" name="submit" class="btn btn-primary mr-10">Save &amp; Proceed</button>

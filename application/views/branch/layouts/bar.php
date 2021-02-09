@@ -25,6 +25,27 @@
                 </li>
             </ul>
 
+            <ul class="navbar-nav flex-column">
+                <li class="nav-item <?php echo ($this->uri->segment(2) == 'deliverer') ? 'active' : ''; ?>">
+                    <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#delivererUl">
+                        <span class="feather-icon"><i data-feather="map-pin"></i></span>
+                        <span class="nav-link-text">Deliverer</span>
+                    </a>
+                    <ul id="delivererUl" class="nav flex-column collapse collapse-level-1">
+                        <li class="nav-item">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo site_url('branch/deliverer/new'); ?>">Add new deliverer</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo site_url('branch/deliverer/view'); ?>">View deliverers</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
             <hr class="nav-separator">
             <div class="nav-header">
                 <span>Settings</span>

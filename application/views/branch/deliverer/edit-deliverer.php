@@ -28,7 +28,7 @@ foreach ($documentsLicense as $docLicense) {
     <!-- <p class="mb-25">Place an icon inside add-on on either side of an input. You may also place one on right side of an input.</p> -->
     <div class="row">
         <div class="col-sm">
-            <form autocomplete="off" action="<?php echo site_url('admin/deliverer/editDeliverer/' . $this->uri->segment(4)); ?>" method="post" enctype="multipart/form-data">
+            <form autocomplete="off" action="<?php echo site_url('branch/deliverer/editDeliverer/' . $this->uri->segment(4)); ?>" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="thisId" value="<?php echo $thisId; ?>">
                 <div class="form-group">
                     <label class="control-label mb-10" for="exampleInputuname_1">Name</label>
@@ -127,23 +127,6 @@ foreach ($documentsLicense as $docLicense) {
                             <span class="input-group-text"><i class="icon-user"></i></span>
                         </div>
                         <input type="text" class="form-control" value="<?php echo $DELIVERER_DETAILS[0]->branch; ?>" name="branch" id="exampleInputuname_1" placeholder="Branch Name" required>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label mb-10" for="the_branch">Select Branch</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="icon-user"></i></span>
-                        </div>
-                        <select name="the_branch" id="the_branch" class="form-control" required>
-                            <option value="">--select branch--</option>
-                            <?php foreach ($BRANCHES as $key) {
-                                $isSelected = $key->id == $DELIVERER_DETAILS[0]->branch_code ? 'selected' : '';
-                                ?>
-                                <option <?php echo $isSelected; ?> value="<?php echo $key->id; ?>"><?php echo $key->name . " - " . $key->phone; ?></option>
-                            <?php } ?>
-                        </select>
                     </div>
                 </div>
                 <button type="submit" name="submit" class="btn btn-primary mr-10">Save Changes</button>
