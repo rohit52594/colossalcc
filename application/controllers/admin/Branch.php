@@ -80,6 +80,11 @@ class Branch extends CI_Controller
 
 					'password' => $this->encryption->encrypt($this->input->post('password')),
 
+					'state' => $this->input->post('state'),
+					'city' => $this->input->post('city'),
+					'pin' => $this->input->post('pin'),
+					'po' => $this->input->post('po'),
+					'district' => $this->input->post('district'),
 					'address' => $this->input->post('address'),
 
 					'added_date' => date('Y-m-d'),
@@ -213,6 +218,12 @@ class Branch extends CI_Controller
 
 					'last_updated_time' => date('H:i:s'),
 
+					'state' => $this->input->post('state'),
+					'city' => $this->input->post('city'),
+					'pin' => $this->input->post('pin'),
+					'po' => $this->input->post('po'),
+					'district' => $this->input->post('district'),
+
 					'last_updated_remote' => $_SERVER['REMOTE_ADDR']
 
 				];
@@ -226,13 +237,13 @@ class Branch extends CI_Controller
 					redirect('admin/branch/view');
 				} else {
 
-					$this->session->set_flashdata('success', 'Seller details updated successfully!');
+					$this->session->set_flashdata('success', 'Branch details updated successfully!');
 
 					redirect('admin/branch/view');
 				}
 			} else {
 
-				$this->session->set_flashdata('warning', 'Phone number already in use with another seller');
+				$this->session->set_flashdata('warning', 'Phone number already in use with another branch');
 			}
 		} else {
 

@@ -6,7 +6,7 @@ function sendsms($mobileno, $template, $variables){
         $vars1 .= '&'.$key.'='.$value;
     }
     $sender = 'BUYSRA';
-    $api = 'edd55e6e-a008-11ea-9fa5-0200cd936042';
+    $api = '';
     $baseurl = 'https://2factor.in/API/R1/?module=TRANS_SMS&apikey='.$api.'&to='.$mobileno.'&from='.$sender.'&templatename='.$template.$vars1;
     // var1=VAR1_VALUE&var2=VAR2_VALUE'
     // echo $baseurl;
@@ -47,7 +47,7 @@ function saleIdGenerate($n) {
         $index = rand(0, strlen($characters) - 1); 
         $randomString .= $characters[$index]; 
     }
-    $ifExists = $ci->Crud->Count('orders', " `tracking_id` = '$randomString'");
+    $ifExists = $ci->Crud->Count('parcels', " `tracking_id` = '$randomString'");
         if ($ifExists > 0) {
             trackingIdGenerate(8);
         } else {

@@ -58,6 +58,60 @@
                         <input type="text" class="form-control" name="address" id="address" placeholder="Enter branch location" required>
                     </div>
                 </div>
+
+
+
+                <div class="form-group">
+                    <label class="control-label mb-10" for="state">State</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="icon-location-pin"></i></span>
+                        </div>
+                        <input type="text" class="form-control" name="state" id="state" placeholder="Enter Branch State" required>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="control-label mb-10" for="city">City</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="icon-location-pin"></i></span>
+                        </div>
+                        <input type="text" class="form-control" name="city" id="city" placeholder="Enter Branch City" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label mb-10" for="pin">Pincode</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="icon-location-pin"></i></span>
+                        </div>
+                        <input type="text" class="form-control" name="pin" id="pin" placeholder="Enter Branch Pincode" pattern="[0-9]{6}" maxlength="6" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="control-label mb-10" for="po">P.O. /P.S.</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="icon-location-pin"></i></span>
+                        </div>
+                        <input type="text" class="form-control" name="po" id="po" placeholder="Enter P.O. / P.S." required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="control-label mb-10" for="district">District</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="icon-location-pin"></i></span>
+                        </div>
+                        <input type="text" class="form-control" name="district" id="district" placeholder="Enter District" required>
+                    </div>
+                </div>
+                
                 <button type="submit" name="submit" class="btn btn-primary mr-10">Save &amp; Proceed</button>
                 <button type="reset" class="btn btn-light">Cancel</button>
             </form>

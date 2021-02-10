@@ -53,6 +53,59 @@ foreach ($BRANCH_DETAILS as $branch) {
                         <input type="text" class="form-control" value="<?php echo $address; ?>" name="address" id="address" placeholder="Enter branch address" required>
                     </div>
                 </div>
+
+
+
+                <div class="form-group">
+                    <label class="control-label mb-10" for="state">State</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="icon-location-pin"></i></span>
+                        </div>
+                        <input type="text" class="form-control" name="state" id="state" value="<?php echo $BRANCH_DETAILS[0]->state; ?>" placeholder="Enter Branch State" required>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="control-label mb-10" for="city">City</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="icon-location-pin"></i></span>
+                        </div>
+                        <input type="text" class="form-control" name="city" value="<?php echo $BRANCH_DETAILS[0]->city; ?>" id="city" placeholder="Enter Branch City" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label mb-10" for="pin">Pincode</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="icon-location-pin"></i></span>
+                        </div>
+                        <input type="text" class="form-control" name="pin" id="pin" placeholder="Enter Branch Pincode" pattern="[0-9]{6}" maxlength="6" value="<?php echo $BRANCH_DETAILS[0]->pin; ?>" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label mb-10" for="po">P.O. /P.S.</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="icon-location-pin"></i></span>
+                        </div>
+                        <input type="text" class="form-control" name="po" id="po" placeholder="Enter P.O. / P.S." value="<?php echo $BRANCH_DETAILS[0]->po; ?>" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label mb-10" for="district">District</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="icon-location-pin"></i></span>
+                        </div>
+                        <input type="text" class="form-control" name="district" value="<?php echo $BRANCH_DETAILS[0]->district; ?>" id="district" placeholder="Enter District" required>
+                    </div>
+                </div>
                 <button type="submit" name="submit" class="btn btn-primary mr-10">Save Changes</button>
                 <button type="reset" class="btn btn-light">Cancel</button>
             </form>

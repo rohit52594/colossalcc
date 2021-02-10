@@ -18,9 +18,30 @@
             <ul class="navbar-nav flex-column">
 
                 <li class="nav-item <?php echo ($this->uri->segment(2) == 'earning') ? 'active' : ''; ?>">
+                    <a class="nav-link" href="<?php echo base_url('branch/parcel/getParcel'); ?>">
+                        <span class="feather-icon"><i data-feather="activity"></i></span>
+                        <span class="nav-link-text">New Parcel</span>
+                    </a>
+                </li>
+
+                <li class="nav-item <?php echo ($this->uri->segment(2) == 'earning') ? 'active' : ''; ?>">
                     <a class="nav-link" href="#" onclick="alert('Coming soon')">
                         <span class="feather-icon"><i data-feather="activity"></i></span>
-                        <span class="nav-link-text">Received Items</span>
+                        <span class="nav-link-text">Available Parcels</span>
+                    </a>
+                </li>
+
+                <li class="nav-item <?php echo ($this->uri->segment(2) == 'earning') ? 'active' : ''; ?>">
+                    <a class="nav-link" href="#" onclick="alert('Coming soon')">
+                        <span class="feather-icon"><i data-feather="activity"></i></span>
+                        <span class="nav-link-text">Incoming Parcels</span>
+                    </a>
+                </li>
+
+                <li class="nav-item <?php echo ($this->uri->segment(2) == 'earning') ? 'active' : ''; ?>">
+                    <a class="nav-link" href="#" onclick="alert('Coming soon')">
+                        <span class="feather-icon"><i data-feather="activity"></i></span>
+                        <span class="nav-link-text">Out for Delivery</span>
                     </a>
                 </li>
             </ul>
