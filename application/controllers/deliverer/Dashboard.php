@@ -37,13 +37,41 @@ class Dashboard extends CI_Controller {
 
 	 public function index() {
 		$id = $this->session->userdata('id');
+		$data['PARCELS'] = $this->Crud->Read('parcels', " `deliverer_assigned` = '$id' AND `parcel_status` = '3'");
 		$this->load->view('deliverer/layouts/header');
 		$this->load->view('deliverer/layouts/nav');
-		$this->load->view('deliverer/layouts/bar');
-		$this->load->view('deliverer/dashboard');
+		// $this->load->view('deliverer/layouts/bar');
+		$this->load->view('deliverer/dashboard', $data);
 		$this->load->view('deliverer/layouts/footer');
 
 	 }
+
+	 public function markDelivered() {
+        $referrer = basename($_SERVER['HTTP_REFERER']);
+        $myId = $this->session->userdata('id');
+        if (!$this->uri->segment(4)) {
+            $this->session->set_flashdata('danger', "Tracking ID not found");
+        } else {
+            $trackingId = $this->uri->segment(4);
+            $readData = $this->Crud->Read('parcels', " `tracking_id` = '$trackingId'");
+            if ($readData[0]->deliverer_assigned == $myId) {
+                $this->Crud->Update('parcels', array(
+                    'parcel_status' => 4,
+                ), " `tracking_id` = '$trackingId'");
+                $notification = "Item delivered successfully.";
+                $this->Crud->Create('transaction_history', array(
+                    'tracking_id' => $trackingId,
+                    'from_branch' => $readData[0]->current_branch,
+                    'to_branch' => $readData[0]->current_branch,
+                    'dispatched_time' => time(),
+                    'narration' => $notification
+                ));
+            } else {
+                $this->session->set_flashdata('danger', "Tracking ID not found");
+            }
+        }
+        redirect('deliverer/' . __CLASS__ . '/');
+    }
 
      public function logout() {
 
