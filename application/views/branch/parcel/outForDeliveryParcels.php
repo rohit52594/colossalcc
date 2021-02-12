@@ -1,5 +1,5 @@
 <section class="hk-sec-wrapper">
-    <h5 class="hk-sec-title">MANAGE AVAILABLE PARCELS</h5>
+    <h5 class="hk-sec-title">OUT FOR DELIVERY FROM THIS BRANCH</h5>
     <div class="row">
         <div class="col-sm">
             <div class="table-wrap">
@@ -25,18 +25,7 @@
                                 <td>&#8377;<?php echo $key->parcel_price; ?> - <?php echo $key->parcel_is_paid == 0 ? "<span class='badge badge-danger'>Not Paid</span>" : "<span class='badge badge-success'>Paid</span>"; ?></td>
 
                                 <td><?php echo date('Y-m-d H:i:s', $key->parcel_receive_time); ?></td>
-                                <td><a class="btn btn-info btn-xs">Track</a>&ensp;<a data-toggle="modal" data-target="#dispatchModal" data-tracking="<?php echo $key->tracking_id; ?>" class="btn btn-success btn-xs dispatch">Dispatch</a>&ensp;
-                                    <?php if ($key->current_branch == $key->destination_branch && $key->parcel_delivery_attempt < 4) { ?>
-                                        <a data-toggle="modal" data-target="#deliverModal" data-tracking="<?php echo $key->tracking_id; ?>" class="btn btn-warning btn-xs deliver">Deliver
-                                        <?php if ($key->parcel_delivery_attempt > 0) { ?>
-                                            &ensp;<span class="badge badge-danger"><?php echo $key->parcel_delivery_attempt; ?> failed attempts</span>
-                                        <?php } ?>
-                                    </a>
-                                    <?php } ?>
-                                    <?php if ($key->parcel_delivery_attempt == 3) { ?>
-                                        &ensp;<br /><br /><a class="btn btn-danger" data-toggle="modal" data-target="#dispatchModal" data-tracking="<?php echo $key->tracking_id; ?>" class="btn btn-success btn-xs dispatch"><?php echo $key->parcel_delivery_attempt; ?> failed attempts, please return this parcel</a>
-                                    <?php } ?>
-                                </td>
+                                <td><a class="btn btn-info btn-xs">Track</a>&ensp;<a href="<?= base_url('branch/parcel/failedDelivery/'.$key->tracking_id); ?>" onclick="return confirm('Are you sure want to mark this item as a failed delivery attempt?')" class="btn btn-danger btn-xs deliver">Failed Delivery?</a></td>
                             </tr>
                         <?php
                         }

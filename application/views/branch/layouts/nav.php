@@ -8,7 +8,7 @@
         <!-- Top Navbar -->
         <nav class="navbar navbar-expand-xl navbar-light fixed-top hk-navbar">
             <a id="navbar_toggle_btn" class="navbar-toggle-btn nav-link-hover" href="javascript:void(0);"><span class="feather-icon"><i data-feather="menu"></i></span></a>
-            <a class="navbar-brand font-weight-700" href="<?php echo site_url('seller/dashboard'); ?>">
+            <a class="navbar-brand font-weight-700" href="<?php echo site_url('branch/dashboard'); ?>">
                 <?php echo PROJECT_NAME; ?>
             </a>
             <ul class="navbar-nav hk-navbar-content">
@@ -28,10 +28,10 @@
                         </div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" data-dropdown-in="flipInX" data-dropdown-out="flipOutX">
-                        <a class="dropdown-item" href="<?php echo base_url('seller/settings/profile/'); ?>"><i class="dropdown-icon zmdi zmdi-account"></i><span>Profile</span></a>
-                        <a class="dropdown-item" href="#"><i class="dropdown-icon zmdi zmdi-settings"></i><span>Settings</span></a>
+                        <a class="dropdown-item" href="<?php echo base_url('branch/settings/profile/'); ?>"><i class="dropdown-icon zmdi zmdi-account"></i><span>Profile</span></a>
+                        <a class="dropdown-item" href="<?php echo base_url('branch/settings/password/'); ?>"><i class="dropdown-icon zmdi zmdi-settings"></i><span>Password</span></a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="<?php echo site_url('seller/dashboard/logout'); ?>"><i class="dropdown-icon zmdi zmdi-power"></i><span>Log out</span></a>
+                        <a class="dropdown-item" href="<?php echo site_url('branch/dashboard/logout'); ?>"><i class="dropdown-icon zmdi zmdi-power"></i><span>Log out</span></a>
                     </div>
                 </li>
             </ul>

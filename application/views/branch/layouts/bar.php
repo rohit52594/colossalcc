@@ -25,21 +25,14 @@
                 </li>
 
                 <li class="nav-item <?php echo ($this->uri->segment(2) == 'earning') ? 'active' : ''; ?>">
-                    <a class="nav-link" href="#" onclick="alert('Coming soon')">
+                    <a class="nav-link" href="<?= base_url('branch/parcel/availableParcels'); ?>">
                         <span class="feather-icon"><i data-feather="activity"></i></span>
                         <span class="nav-link-text">Available Parcels</span>
                     </a>
                 </li>
 
                 <li class="nav-item <?php echo ($this->uri->segment(2) == 'earning') ? 'active' : ''; ?>">
-                    <a class="nav-link" href="#" onclick="alert('Coming soon')">
-                        <span class="feather-icon"><i data-feather="activity"></i></span>
-                        <span class="nav-link-text">Incoming Parcels</span>
-                    </a>
-                </li>
-
-                <li class="nav-item <?php echo ($this->uri->segment(2) == 'earning') ? 'active' : ''; ?>">
-                    <a class="nav-link" href="#" onclick="alert('Coming soon')">
+                    <a class="nav-link" href="<?= base_url('branch/parcel/outForDeliveryParcels/'); ?>">
                         <span class="feather-icon"><i data-feather="activity"></i></span>
                         <span class="nav-link-text">Out for Delivery</span>
                     </a>

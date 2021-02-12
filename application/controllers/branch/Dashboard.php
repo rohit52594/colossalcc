@@ -58,6 +58,6 @@ class Dashboard extends CI_Controller
 		}
 
 		// redirect('branch/authentication/login');
-		echo "<script>localStorage.removeItem('seller-access-token'); window.location.assign('".base_url('/seller/authentication/login')."')</script>";
+		echo "<script>localStorage.removeItem('seller-access-token'); window.location.assign('".base_url('/branch/authentication/login')."')</script>";
 	}
 }
