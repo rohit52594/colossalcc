@@ -60,24 +60,6 @@
                 </li>
             </ul>
 
-            <ul class="navbar-nav flex-column">
-                <li class="nav-item <?php echo ($this->uri->segment(2) == 'customers') ? 'active' : ''; ?>">
-                    <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#customer">
-                        <span class="feather-icon"><i data-feather="user-check"></i></span>
-                        <span class="nav-link-text">Customers</span>
-                    </a>
-                    <ul id="customer" class="nav flex-column collapse collapse-level-1">
-                        <li class="nav-item">
-                            <ul class="nav flex-column">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo site_url('admin/customers/active'); ?>">Active customers</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-
             <hr class="nav-separator">
             <div class="nav-header">
                 <span>Settings</span>
