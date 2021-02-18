@@ -60,6 +60,36 @@
                 </li>
             </ul>
 
+            <ul class="navbar-nav flex-column">
+                <li class="nav-item <?php echo ($this->uri->segment(2) == 'parcel') ? 'active' : ''; ?>">
+                    <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#parcelUl">
+                        <span class="feather-icon"><i data-feather="map-pin"></i></span>
+                        <span class="nav-link-text">Parcel</span>
+                    </a>
+                    <ul id="parcelUl" class="nav flex-column collapse collapse-level-1">
+                        <li class="nav-item">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo site_url('admin/parcel/newParcels'); ?>">New Parcels</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo site_url('admin/parcel/inTransit'); ?>">In Transit</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo site_url('admin/parcel/outForDeliveryParcel'); ?>">Our for Delivery</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo site_url('admin/parcel/delivered'); ?>">Delivered</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo site_url('admin/parcel/undelivered'); ?>">Undelivered</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
             <hr class="nav-separator">
             <div class="nav-header">
                 <span>Settings</span>
